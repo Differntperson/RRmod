@@ -17,8 +17,10 @@ local mouseref = love.mousepressed
 function love.mousepressed(x, y, button, istouch, presses)
   mouseref(x, y, button, istouch, presses)
   if button == 2 then
-    if G.STATE == G.STATES.SHOP and G.shop and ((G.GAME.dollars - G.GAME.bankrupt_at) - G.GAME.current_round.reroll_cost >= 0) or G.GAME.current_round.reroll_cost == 0 then
-      G.FUNCS.reroll_shop()
+    if G.STATE == G.STATES.SHOP and G.shop then
+      if ((G.GAME.dollars - G.GAME.bankrupt_at) - G.GAME.current_round.reroll_cost >= 0) or G.GAME.current_round.reroll_cost == 0 then
+        G.FUNCS.reroll_shop()
+      end
     end
     return
   end
